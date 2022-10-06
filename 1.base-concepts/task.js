@@ -20,19 +20,18 @@ function calculateTotalMortgage(percent, contribution, amount, date) {
   let today = new Date();
   let endTerm = new Date(date);
   let term = Math.floor((endTerm -today) / 1000 / 60 / 60 / 24 / 30);
-  percent = parseInt(percent);
-  contribution = parseInt(contribution);
-  amount = parseInt(amount);
-    if (typeof percent !== 'number') {
-    totalAmount = `Параметр "Процентная ставка" содержит неправильное значение "${percent}"`;
-  } else if (typeof contribution !== 'number') {
-    totalAmount = `Параметр "Начальный взнос" содержит неправильное значение "${contribution}"`;
-  } else if (typeof amount !== 'number') {
-    totalAmount = `Параметр "Общая стоимость" содержит неправильное значение "${amount}"`;
-  } else {
-    loanSum = amount - contribution;
-    monthPayment = loanSum * (yearPart + (yearPart / ((( 1 + yearPart) ** term) - 1)));
-    totalAmount = Number(((monthPayment * term) .toFixed(2)));
-  }
+  
+    if (isNaN(percent)) {
+    return `Параметр "Процентная ставка" содержит неправильное значение "${percent}"`;
+  } else if (isNaN(contribution)) {
+    return `Параметр "Начальный взнос" содержит неправильное значение "${contribution}"`;
+  } else if (isNaN(amount)) {
+    return `Параметр "Общая стоимость" содержит неправильное значение "${amount}"`;
+  } 
+  
+  loanSum = amount - contribution;
+  monthPayment = loanSum * (yearPart + (yearPart / ((( 1 + yearPart) ** term) - 1)));
+  totalAmount = Number(((monthPayment * term) .toFixed(2)));
+  
   return totalAmount;
 }
