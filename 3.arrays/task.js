@@ -1,14 +1,9 @@
 function compareArrays(arr1, arr2) {
   let result;  
-  /*let arrSum = [arr1, arr2];
-    result = arrSum.every(comparingElemnts => arr1 === arr2);
-    не понимаю как использовать every в данных условиях задачи, вариант выше не работает */
-    if (arr1.toString() === arr2.toString()) {
-      result = true;
-    } else {
-      result = false;
-    }
-  return result; // boolean
+  if (arr1.length === arr2.length) {
+    return result = arr1.every((item, index) => item === arr2[index]);
+    } else
+    return false;
 }
 
 function advancedFilter(arr) {

@@ -49,6 +49,6 @@ function worker2(arr) {
     }
   }  
   dif = Math.abs(max - min); 
- return dif
+  return dif
 }
 
